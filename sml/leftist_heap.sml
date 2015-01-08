@@ -33,7 +33,11 @@ struct
         if Elem.leq (x, y) then makeT (x, a1, merge (b1, h2))
         else makeT (y, a2, merge (h1, b2))
 
-  fun insert (x, h) = merge (T (1, x, E, E), h)
+  (* fun insert (x, h) = merge (T (1, x, E, E), h) *)
+  fun insert (x, E) = T (1, x, E, E)
+  fun insert (x, h as T (_, y, a, b)) = 
+        if Elem.leq (x, y) then makeT (x, E, merge (E, h))
+        else makeT (y, a, insert (x, b))
 
   exception EMPTY
   fun findMin E = raise EMPTY
