@@ -1,0 +1,6 @@
+.DS_Store
+.*.swp
+
+.cabal-sandbox/
+cabal.sandbox.config
+haskell/dist
