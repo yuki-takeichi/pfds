@@ -44,6 +44,18 @@ struct
     | findMin (T (_, x, a, b)) = x
   fun deleteMin E = raise EMPTY
     | deleteMin (T (_, x, a, b)) = merge (a, b)
+
+  (* exercise 3.3 *)
+  fun fromList [] = E
 end
 
+fun pop x:xs = (x, xs)
+fun eat 0 xs = (E, xs)
+    eat 1 xs = let (x1, xs1) = pop xs,
+                   (x2, xs2) = pop xs1
+               in (merge(x1, x2), xs2)
+fun fromList' xs 0 = eat (0, xs)
+
+
 structure IntLeftistHeap = LeftistHeap (IntElem)
+
