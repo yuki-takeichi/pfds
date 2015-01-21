@@ -14,7 +14,7 @@ spec = do
         prop "char" (test_reverse :: [Char] -> Bool)
 
 -- リストの逆順の逆順は元と同じになる
-test_reverse :: [a] -> Bool
+test_reverse :: Eq a => [a] -> Bool
 test_reverse xs = xs == reverse (reverse xs)
 --
 
